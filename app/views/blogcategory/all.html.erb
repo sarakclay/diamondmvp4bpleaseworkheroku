@@ -1,0 +1,39 @@
+<a href="/blogcategory/new"><button type="submit" class="btn btn-success btn-md">New Category</button></a>
+<br>
+<br>
+<br>
+
+<!--Header row-->
+<div class = "row">
+  <div class = "col-sm-4 panel panel-default">
+    <p class = "namest">Category Name</p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+    <p class="namest">Category ID</p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+    <p class="namest">Edit</p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+    <p class="namest">Delete</p>
+  </div>
+</div>
+
+<!--Category rows-->
+<% @blogcategory_list.each do |blogcategory| %>
+<div class = "row">
+  <div class = "col-sm-4  panel panel-default">
+    <p class = "namest"><%=blogcategory.category%></p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+    <p class="namest"><%=blogcategory.id%></p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+    <a href ="/blogcategory/<%=blogcategory.id%>/edit"><p class="namest">Edit</p></a>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+    <a href ="/blogcategory/<%=blogcategory.id%>/delete"><p class="namest">Delete</p></a>
+  </div>
+</div>
+<%end%>
+

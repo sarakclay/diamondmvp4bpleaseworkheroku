@@ -1,0 +1,52 @@
+<table class="blogtable" >
+
+    <!--Row 1 is the pic and title, category, author, date info-->
+    <tr>
+       <td class="blogpic_show">
+            <%= image_tag @blog_list.image, :width=>350, :class=>"blogpicborder" %>
+        </td>
+        <td class="blogttitle_show">
+            <h1 class = "namest"><%=@blog_list.title%></a></h1>
+            <h2 class = "detail"><%=@blog_list.subhead%></h2>
+            <% if @category_list.present? %>
+                <h2 class = "detail"><%=@category_list.category%></h2>
+            <%else%>
+                <h2 class = "detail">No Category</h2>
+            <%end%>
+            <p class = "detail">By: <%=@blog_list.author%> | <%=@blog_list.date%></p>
+            <br>
+            <% employee = Employee.find_by(:id => session[:employee_id]) %>
+            <% if employee.present? %>
+                <p><a class="btn monkey" href="/blog/<%=@blog_list.id%>/edit" role="button" color="grey">Edit &raquo;</a></p>
+                <p><a class="btn monkey" href="/blog/<%=@blog_list.id%>/delete" role="button" color="grey">Delete &raquo;</a></p>
+            <%else%>
+            <%end%>
+        </td>
+    </tr>
+
+    <!--Row 2 is the first part of the blog text-->
+    <tr>
+        <td colspan="2" class="blogtext_show">
+            <p class = "lead detail"><%=@blog_list.text%> </p>
+        </td>
+    </tr>
+
+    <!--Row 3 is the list of tags-->
+    <tr>
+        <td colspan="2" class="blogtags_show">
+            <p class="tagfont"><strong>Tags:</strong>
+                <% if @tagging_list.count >0 %> |
+                    <% @tagging_list.each do |tagging| %>
+                        <% tag = Blogtag.find_by(:id => tagging.blogtag_id) %>
+                        <% if tag.present?%>
+                        <%=tag.tag%>|
+                        <% end %>
+                    <% end %>
+                <%else%>
+                No tags
+                <% end %>
+            </p>
+        </td>
+    </tr>
+
+</table>

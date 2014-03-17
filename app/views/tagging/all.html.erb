@@ -1,0 +1,79 @@
+<a href="/tagging/new"><button type="submit" class="btn btn-success btn-md">New Tagging Pair</button></a>
+<br>
+<br>
+<br>
+
+<!--Header row-->
+<div class = "row">
+  <div class = "col-sm-1 panel panel-default">
+      <p class = "namestsmall">Tagging ID</p>
+  </div>
+  <div class = "col-sm-1 panel panel-default">
+     <p class="namestsmall">Blog ID</p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+     <p class="namestsmall">Blog title</p>
+  </div>
+   <div class = "col-sm-2 panel panel-default">
+      <p class="namestsmall">Created at</p>
+  </div>
+  <div class = "col-sm-1 panel panel-default">
+      <p class="namestsmall">Tag ID</p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+      <p class="namestsmall">Tag name</p>
+  </div>
+  <div class = "col-sm-1 panel panel-default">
+     <p class="namestsmall">Edit</p>
+  </div>
+  <div class = "col-sm-1 panel panel-default">
+     <p class="namestsmall">Delete</p>
+  </div>
+</div>
+
+<!--Category rows-->
+<% @tagging_list.each do |tagging| %>
+<div class = "row">
+  <div class = "col-sm-1  panel panel-default">
+      <p class = "namestsmall"><%=tagging.id%></p>
+  </div>
+  <div class = "col-sm-1  panel panel-default">
+      <p class = "namestsmall"><%=tagging.blog_id%></p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+      <%blog = Blog.find_by(:id => tagging.blog_id)%>
+      <% if blog.present?%>
+        <p class="namestsmall"><%=blog.title%></p>
+      <%else%>
+        <p class="namestsmall">Blog deleted</p>
+      <%end%>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+      <%blog = Blog.find_by(:id => tagging.blog_id)%>
+      <% if blog.present?%>
+        <p class="namestsmall"><%=blog.created_at%></p>
+      <%else%>
+        <p class="namestsmall">Blog deleted</p>
+      <%end%>
+  </div>
+  <div class = "col-sm-1 panel panel-default">
+      <p class="namestsmall"><%=tagging.blogtag_id%></p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+      <%tag = Blogtag.find_by(:id => tagging.blogtag_id)%>
+      <% if tag.present?%>
+        <p class="namestsmall"><%=tag.tag%></p>
+      <%else%>
+        <p class="namestsmall">Tag deleted</p>
+      <%end%>
+  </div>
+  <div class = "col-sm-1 panel panel-default">
+      <a href ="/tagging/<%=tagging.id%>/edit"><p class="namestsmall">Edit</p></a>
+  </div>
+  <div class = "col-sm-1 panel panel-default">
+      <a href ="/tagging/<%=tagging.id%>/delete"><p class="namestsmall">Delete</p></a>
+  </div>
+</div>
+<%end%>
+
+

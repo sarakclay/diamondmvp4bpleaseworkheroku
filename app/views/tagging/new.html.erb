@@ -1,0 +1,19 @@
+<h1>New Tagging Pair</h1>
+
+<form action="/tagging/create">
+
+ <select name="blog_id">
+  <% Blog.all.each do |blog| %>
+      <option value = "<%=blog.id%>"><%=blog.title%> : <%=blog.created_at%></option>
+  <% end %>
+ </select>
+
+ <select name="blogtag_id">
+  <% Blogtag.all.each do |blogtag| %>
+      <option value = "<%=blogtag.id%>"><%=blogtag.tag%></option>
+  <% end %>
+ </select>
+
+ <input type ="submit" class = "btn btn-lg btn-success" value="Save New Tagging Pair">
+
+</form>

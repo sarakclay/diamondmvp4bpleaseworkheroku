@@ -1,0 +1,32 @@
+<head>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
+
+<h1> Tag new inventory -- figure out how to put notice messages if input data is not in the correct form (e.g. no commas or decimals) </h1>
+
+<form action="/products/create">
+
+  <div class ="form-group">
+  <input name ="name" type="string" maxlength= 22 class="form-control input-md" placeholder ="Name">
+  </div>
+
+  <div class ="form-group">
+  <input name ="depth" type="integer" class="form-control input-md" placeholder ="Depth">
+  </div>
+
+  <div class ="form-group">
+  <input name ="retailprice" type="integer" class="form-control input-md" placeholder ="Retail Price">
+  </div>
+
+  <div class ="form-group">
+  <input name ="ourprice" type="integer" class="form-control input-md" placeholder ="Our Price">
+  </div>
+
+<div class ="form-group">
+  <input name ="carat" type="integer" class="form-control input-md" placeholder ="Carat">
+  </div>
+
+  <input type ="submit" class = "btn btn-lg btn-success" value="Enter New Item">
+
+</form>
+

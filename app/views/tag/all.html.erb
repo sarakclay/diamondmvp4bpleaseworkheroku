@@ -1,0 +1,39 @@
+<a href="/tag/new"><button type="submit" class="btn btn-success btn-md">New Tag</button></a>
+<br>
+<br>
+<br>
+
+<!--Header row-->
+<div class = "row">
+  <div class = "col-sm-4 panel panel-default">
+      <p class = "namest">Tag Name</p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+      <p class="namest">Tag ID</p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+      <p class="namest">Edit</p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+      <p class="namest">Delete</p>
+  </div>
+</div>
+
+<!--Category rows-->
+<% @tag_list.each do |tag| %>
+<div class = "row">
+  <div class = "col-sm-4  panel panel-default">
+      <p class = "namest"><%=tag.tag%></p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+      <p class="namest"><%=tag.id%></p>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+      <a href ="/tag/<%=tag.id%>/edit"><p class="namest">Edit</p></a>
+  </div>
+  <div class = "col-sm-2 panel panel-default">
+      <a href ="/tag/<%=tag.id%>/delete"><p class="namest">Delete</p></a>
+  </div>
+</div>
+<%end%>
+

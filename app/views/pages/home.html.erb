@@ -1,0 +1,61 @@
+<style>
+.monkey {width:200px; height:30px;font-size:18px;padding-bottom: 2px; padding-top: 2px}
+.ourprice {font-size: 16px; color:#dc143c; font-weight: bold; margin-bottom: 0px}
+.retailprice {font-size: 16px; text-decoration: line-through; color:#dc143c; margin-bottom: 0px}
+.detail {font-size:14px; margin-bottom: 0px; font-style: italic;}
+.namest {font-size:18px; color:#4c4c4c;font-weight: bold;margin-bottom:15px}
+</style>
+
+<div class="jumbotron">
+      <div class="row">
+            <div class = "col-lg-1">
+            <h1>  </h1>
+            </div>
+           <% @product_list.first(3).each do |product| %>
+           <div class ="col-lg-2">
+           <center><a href = "/products/<%=product.id%>/show"><%= image_tag product.image_url, :width=>150 %></a></center>
+           </div>
+          <% end %>
+           <div class = "col-lg-1">
+            <h1>  </h1>
+            </div>
+          <div class="col-lg-4">
+          <center>
+           <h1>The Ring </h1>
+           <h1> of Her </h1>
+           <h1>Dreams</h1>
+           </center>
+           <p class="lead">doesn't have to break the bank.</p>
+         </div>
+    </div>
+      </div>
+
+<div>
+<center>
+        <p><a href="/products/all" class="btn " href="#" role="button">SHOP SMARTER</a></p>
+</center>
+</div>
+<br>
+      <!-- Example row of columns -->
+     <% @product_list.first(4).each do |product| %>
+      <div class = "row-fluid">
+<div class = "col-sm-3">
+<div class = "panel panel-default">
+<div class = "panel-body">
+<center>
+<a href = "/products/<%=product.id%>/show"><%= image_tag product.image_url, :width=>100 %> <!--<img width="200" src="<%=product.image_url %>">--></a>
+<a href = "/products/<%=product.id%>/show"><h3 class ="namest"><%= product.name %></h3></a>
+<p class = "lead ourprice">Our price: $<%=product.ourprice%></p>
+<p class = "lead retailprice">Retail price: $<%=product.retailprice%></p>
+<p class = "lead detail"><%=product.carat%> carats</p>
+<p class = "lead detail"><%=product.depth%> deep </p>
+</center>
+</div>
+</div>
+</div>
+</div>
+        <% end %>
+
+
+
+

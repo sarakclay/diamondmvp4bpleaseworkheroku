@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>Edit Category #<%=@blogcategory_list.id%>: <%=@blogcategory_list.category%></h1>
+</div>
+
+<form action="/blogcategory/<%=@blogcategory_list.id%>/update">
+
+  <div class ="form-group">
+    <label>Category:</label>
+      <input value = <%=@blogcategory_list.category %> name ="category" type="string" class="form-control input-md" >
+  </div>
+
+  <button type="submit" class="btn btn-success btn-md">Update Category</button>
+  or
+  <a href="/blogcategory">Cancel</a>
+
+</form>
+

@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h1>Edit Tag #<%=@tag_list.id%>: <%=@tag_list.tag%></h1>
+</div>
+
+<form action="/tag/<%=@tag_list.id%>/update">
+
+  <div class ="form-group">
+     <label>Tag:</label>
+     <input value = <%= @tag_list.tag %> name ="tag" type="string" class="form-control input-md" >
+  </div>
+
+  <button type="submit" class="btn btn-success btn-md">Update Tag</button>
+  or
+  <a href="/tag">Cancel</a>
+
+</form>
+
+

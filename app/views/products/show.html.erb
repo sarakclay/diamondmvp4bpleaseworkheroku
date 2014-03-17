@@ -1,0 +1,37 @@
+<style>
+.monkey {width:200px; height:30px;font-size:18px;padding-bottom: 2px; padding-top: 2px}
+.ourprice2 {font-size: 24px; color:#dc143c; font-weight: bold; margin-bottom: 0px}
+.retailprice2 {font-size: 24px; text-decoration: line-through; color:#dc143c; margin-bottom: 0px}
+.detail2 {font-size:20px; margin-bottom: 0px; font-style: italic;}
+.namest2 {font-size:30px; color:#4c4c4c;font-weight: bold;margin-bottom:15px}
+</style>
+
+<% employee = Employee.find_by(:id => session[:employee_id]) %>
+
+
+<div class="row">
+  <div class="col-md-1">
+  </div>
+ <div class="col-md-4">
+<a class="col-md-12"> <%= image_tag @product_list.image_url, :width=>300%></a>
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-4">
+
+    <h3 class = "prettyprint namest2 horzline"><%= @product_list.name %></h3>
+    <p class="lead ourprice2">Our price: <%= number_to_currency(@product_list.ourprice) %></p>
+    <p class = "lead retailprice2">Retail price: $<%=@product_list.retailprice%></p>
+    <p class = "lead detail2"><%=@product_list.carat%> carats</p>
+    <p class = "lead detail2"><%=@product_list.depth%> deep </p>
+    <br>
+    <% if employee.present? %>
+    <p><a class="btn monkey" href="/products/<%=@product_list.id%>/edit" role="button" color="grey">Edit &raquo;</a></p>
+    <p><a class="btn monkey" href="/products/<%=@product_list.id%>/delete" role="button" color="grey">Delete &raquo;</a></p>
+    <%else%>
+    <p><a class="btn monkey" href="/purchase" role="button" color="grey">Purchase &raquo;</a></p>
+    <%end%>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<table class="categorytable">
+
+  <thead>
+    <th class="categorytableheader">Categories</th>
+  </thead>
+
+  <% @category_list.each do |category| %>
+    <tr>
+      <td>
+        <p class="categorytablelist"><%=category.category%></p>
+      </td>
+    </tr>
+  <%end%>
+
+  <tr>
+    <td class="categorytablebottom">
+    </td>
+  </tr>
+
+</table>

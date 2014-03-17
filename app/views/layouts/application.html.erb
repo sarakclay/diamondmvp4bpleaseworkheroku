@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diamond engagement rings, new diamonds, used diamonds, pre-owned diamonds</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.0.2/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="theme.css">
+    <%=stylesheet_link_tag "application"%>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  </head>
+
+  <body class = "bgc">
+
+    <!--TOP NAV BAR-->
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+     </div>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/home">Home</a></li>
+       </ul>
+       <ul class="nav navbar-nav navbar-right">
+       <% employee = Employee.find_by(:id => session[:employee_id]) %>
+       <% user = User.find_by(:id => session[:user_id]) %>
+       <% if employee.present? %>
+            <li><a>Employee ID: <%= employee.username%></a></li>
+        <% else %>
+        <% end %>
+       </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!--LOGO/NAME-->
+    <center><a href="/home"><header> Addison Carlyle Diamonds </header></a></center>
+    <!--MIDDLE NAV BAR-->
+    <div class =  "row rownav panel-heading glyphicon-header horzline">
+      <div class = "col-lg-3">
+        <nav> <a href="/diamonds"><div class = "rownav">DIAMONDS</div></a></nav>
+      </div>
+      <div class = "col-lg-3">
+        <nav><a href="/about"><div class = "rownav">ABOUT US</div></a></nav>
+      </div>
+      <div class = "col-lg-3">
+        <nav><a href="/blog"><div class = "rownav">BLOG</div></a></nav>
+      </div>
+      <div class = "col-lg-3">
+        <nav><a href="/careers"><div class = "rownav">CAREERS</div></a></nav>
+      </div>
+    </div>
+
+    <!--ADDITIONAL NAV BAR FOR EDITING-->
+    <% if employee.present? %>
+      <!--First half: Adding new blog elements-->
+      <table class="edittable">
+        <tr>
+          <td>
+            <p class="editcell">New:</p>
+          </td>
+          <td>
+            <p class="editcell2">
+              <a href="/blogcategory/new" class="editcell2">Category</a> |
+              <a href="/blog/new" class="editcell2">Blog</a> |
+              <a href="/tag/new" class="editcell2">Tag</a> |
+              <a href="/tagging/new" class="editcell2">Tagging</a> |
+            </p>
+          </td>
+        </tr>
+      </table>
+      <!--Second half: Editing existing blog elements-->
+      <table class="edittable">
+        <tr>
+          <td>
+            <p class="editcell">Edit:</p>
+          </td>
+          <td>
+            <p class="editcell2">
+              <a href="/blogcategory" class="editcell2">Category</a> |
+              <a href="/blog" class="editcell2">Blog</a> |
+              <a href="/tag" class="editcell2">Tag</a> |
+              <a href="/tagging" class="editcell2">Tagging</a> |
+            </p>
+          </td>
+        </tr>
+      </table>
+  <% else %>
+  <% end %>
+
+  <!--NOTICE-->
+  <div class="container">
+    <% if notice.present? %>
+      <div class="alert alert-dismissable alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= notice %>
+      </div>
+   <% end %>
+ <%= yield %>
+ </div>
+
+   <!--FOOTER-->
+   <footer class="footer">
+      <div class="row">
+        <div class="col-lg-10 muted credit">
+          <p>&copy; A&C Diamonds, 2014</p>
+        </div>
+        <div class = "col-lg-2 muted credit" >
+          <% if employee.present? %>
+              <a href="/employee/logout">Employee Logout</a>
+          <% else %>
+              <a href="/employee/signin">Employee Login</a>
+          <% end %>
+        </div>
+      </div>
+    </footer>
+
+</div>
+</div>
+</body>
+</html>
